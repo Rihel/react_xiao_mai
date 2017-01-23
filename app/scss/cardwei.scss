@@ -1,0 +1,28 @@
+@import 'vars';
+@import 'mixin';
+body {
+    background: url(../img/banner1.jpg) no-repeat 0 0 fixed;
+    background-size: cover;
+}
+
+body:after {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(255, 255, 255, .5);
+    content: '';
+    z-index: -100;
+    filter: blur(10px);
+}
+
+#cardwei {
+    padding: {
+        top: rem(90);
+    }
+    .card {
+        color: #fff;
+        background-image: linear-gradient(45deg, #404996, #8371c5);
+    }
+}

@@ -1,0 +1,70 @@
+@import "vars",
+"mixin";
+input {
+    &:focus {
+        outline: none;
+    }
+}
+
+.form {
+    .form-group {
+        width: 100%;
+        label {
+            margin: rem(10) 0;
+            display: block;
+            width: 100%;
+            .fa:before {
+                margin-right: rem(10);
+                display: inline-block;
+            }
+        }
+        .form-control {
+            border: 1px solid $default;
+            width: 100%;
+            padding: rem(10);
+            &:focus {
+                border-color: $primary;
+                box-shadow: 0 0 rem(10) $primary;
+            }
+        }
+        .form-inline {
+            display: inline-block;
+        }
+        @for $i from 1 through length($color) {
+            .input-#{nth($name,$i)} {
+                border: 1px solid nth($color, $i);
+                &:focus {
+                    outline: none;
+                    border-color: nth($color, $i);
+                    box-shadow: 0 0 rem(10) nth($color, $i);
+                }
+            }
+            .info-#{nth($name,$i)} {
+                color: nth($color, $i);
+            }
+        }
+    }
+}
+
+.btn {
+    padding: rem(10) rem(20);
+    background: transparent;
+    border: none;
+    border-radius: rem(5);
+    color: #fff;
+    text-align: center;
+    margin: {
+        top: rem(10);
+        bottom: rem(10);
+    }
+    @for $i from 1 through length($color) {
+        &.btn-#{nth($name,$i)} {
+            background: nth($color, $i);
+        }
+    }
+    &.btn-block {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+}

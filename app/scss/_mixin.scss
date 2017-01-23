@@ -1,0 +1,51 @@
+@import "vars";
+@mixin media($type){
+  @if $type==xs{
+    @media #{$xs} {
+      @content;
+    }
+  }@else if $type==sm{
+    @media #{$sm} {
+      @content;
+    }
+  }@else if $type==md{
+    @media #{$md} {
+      @content;
+    }
+  }@else if $type==lg{
+    @media #{$lg} {
+      @content;
+    }
+  }
+}
+@mixin clearfix{
+  &:after,&:before{
+    content: '';
+    clear: both;
+    display: table;
+  }
+
+}
+@mixin blockCenter{
+  margin: {
+    left: auto;
+    right: auto;
+  };
+}
+@function rem($value){
+  @return $value/20+rem;
+}
+@mixin grid($type){
+  @include media($type){
+    @for $i from 1 through 12{
+      .col-#{$type}-#{$i}{
+        float: left;
+        width: 100%*($i/12);
+        padding: 0 rem(10);
+      }
+      .col-#{$type}-offset-#{$i}{
+        margin-left: 100% * ($i / 12);
+      }
+    }
+  }
+}

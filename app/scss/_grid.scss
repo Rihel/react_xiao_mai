@@ -1,0 +1,41 @@
+.container {
+    @include clearfix;
+    @include blockCenter;
+    padding: 0 rem(10);
+}
+
+.container-fluid {
+    width: 100%;
+    @include clearfix;
+    padding: 0 rem(15);
+    @include media(sm) {
+        padding: rem(30);
+    }
+}
+
+.row {
+    margin: 0 rem(-10);
+    @include clearfix;
+}
+
+@for $i from 1 through length($screen) {
+    @media #{nth($screen,$i)} {
+        .container {
+            width: nth($screen-width, $i);
+        }
+    }
+}
+
+@for $i from 1 through 6 {
+    .h#{$i} {
+        font-size: rem(30-$i*2);
+    }
+    h#{$i} {
+        font-size: rem(30-$i*2);
+    }
+}
+
+@include grid(xs);
+@include grid(sm);
+@include grid(md);
+@include grid(lg);
