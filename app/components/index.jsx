@@ -22,6 +22,24 @@ const config = {
             name: '卡位7000',
             url: 'cardwei'
         }
+    ],
+    team:[
+        {
+            name:'邀请好友',
+            url:'inviteFriends'
+        },
+        {
+            name:'直推奖励',
+            url:'pushReward'
+        },
+        {
+            name:'团队成员',
+            url:'teamers'
+        },
+        {
+            name:'团队奖励',
+            url:'teamreward'  
+        }
     ]
 
 }
@@ -64,18 +82,8 @@ export default class Index extends React.Component {
                     <h3>TODAY</h3>
                     <section className="ac-container">
                         <section className="ac-container">
-                            <Container list={config.cardwei}>命运扑克</Container>
-                            <div>
-                                <input id="ac-2" name="accordion-1" type="checkbox"/>
-                                <label htmlFor="ac-2" className="grid2">
-                                    <i></i>我的团队</label>
-                                <article className="ac-small">
-                                    <p>邀请好友</p>
-                                    <p>直推奖励</p>
-                                    <p>团队成员</p>
-                                    <p>团队奖励</p>
-                                </article>
-                            </div>
+                            <Container _id="1" list={config.cardwei}>命运扑克</Container>
+                            <Container _id="2" list={config.team}>我的团队</Container>
                             <div>
                                 <input id="ac-3" name="accordion-1" type="checkbox"/>
                                 <label htmlFor="ac-3" className="grid3">
@@ -85,7 +93,15 @@ export default class Index extends React.Component {
                                     <p>极速提现</p>
                                 </article>
                             </div>
-                            <Container list={config.setting}>安全中心</Container>
+                             <div>
+                                <input id="ac-4" name="accordion-1" type="checkbox"/>
+                                <label htmlFor="ac-4" className="grid4">
+                                    <i></i>安全中心</label>
+                                <article className="ac-small">
+                                    <p>资料设置</p>
+                                    <p>退出登录</p>
+                                </article>
+                            </div>
                         </section>
                     </section>
                 </div>
@@ -98,14 +114,15 @@ class Container extends React.Component {
     constructor(props, context) {
         super(props, context)
         this.state = {
-            list: props.list
+            list: props.list,
+            
         }
     }
     render() {
         return (
             <div>
-                <input id="ac-4" name="accordion-1" type="checkbox"/>
-                <label htmlFor="ac-4" className="grid4">
+                <input id={`ac-${this.props._id}`} name="accordion-1" type="checkbox"/>
+                <label htmlFor={`ac-${this.props._id}`} className={`grid${this.props._id}`}>
                     <i></i>{this.props.children}</label>
                 <article className="ac-small">
                     {this

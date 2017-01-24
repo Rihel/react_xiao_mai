@@ -5,6 +5,10 @@ export default class Card extends React.Component {
         super(props, context);
 
     }
+    fanzhuan(e){
+        e.stopPropagation();
+        this.refs.card.className+=' active'
+    }
     render() {
         return (
 
@@ -22,7 +26,7 @@ export default class Card extends React.Component {
                             <h4>还剩下10次翻牌机会</h4>
                         </div>
                     </div>
-                    <div className="cards card">
+                    <div className="cards card" ref="card" onClick={this.fanzhuan.bind(this)}>
                         <div className="up"></div>
                         <div className="down">
                             中奖信息
