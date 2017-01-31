@@ -9,7 +9,7 @@ import Setting from './components/setting';
 import Login from './components/login';
 require('./scss/base.scss')
 require('../node_modules/font-awesome/scss/font-awesome.scss');
-let isLogin=true;
+let isLogin=false;
 class Root extends React.Component {
     render() {
         return (
@@ -68,7 +68,7 @@ function isLogins(component){
     if(isLogin){
         return component;
     }else{
-        alert('请先登录');
+        // alert('请先登录');
         return Login;
     }
 }
